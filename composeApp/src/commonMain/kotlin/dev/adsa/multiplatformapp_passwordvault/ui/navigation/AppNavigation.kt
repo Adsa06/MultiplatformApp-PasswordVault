@@ -8,9 +8,12 @@ import androidx.compose.runtime.setValue
 import dev.adsa.multiplatformapp_passwordvault.ui.screens.MainScreen
 import dev.adsa.multiplatformapp_passwordvault.ui.screens.SecondScreen
 import dev.adsa.multiplatformapp_passwordvault.ui.screens.SettingsScreen
+import dev.adsa.multiplatformapp_passwordvault.ui.translations.AppLanguage
 
 @Composable
-fun AppNavigation() {
+fun AppNavigation(
+    onLanguageChange: (AppLanguage) -> Unit
+) {
     var currentScreen by remember { mutableStateOf(AppScreens.MainScreen.route) }
 
     when (currentScreen) {
@@ -26,7 +29,8 @@ fun AppNavigation() {
         }
         AppScreens.SettingsScreen.route -> {
             SettingsScreen(
-                navigate = { route -> currentScreen = route}
+                navigate = { route -> currentScreen = route},
+                onLanguageChange = onLanguageChange
             )
         }
     }

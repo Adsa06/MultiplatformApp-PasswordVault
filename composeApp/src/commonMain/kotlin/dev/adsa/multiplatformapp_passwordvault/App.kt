@@ -1,30 +1,32 @@
 package dev.adsa.multiplatformapp_passwordvault
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dev.adsa.multiplatformapp_passwordvault.ui.navigation.AppNavigation
-import org.jetbrains.compose.resources.painterResource
-
-import multiplatformapppasswordvault.composeapp.generated.resources.Res
-import multiplatformapppasswordvault.composeapp.generated.resources.compose_multiplatform
+import dev.adsa.multiplatformapp_passwordvault.ui.translations.AppLanguage
+import dev.adsa.multiplatformapp_passwordvault.ui.translations.LocalLanguage
+import dev.adsa.multiplatformapp_passwordvault.ui.translations.StringKey
+import dev.adsa.multiplatformapp_passwordvault.ui.translations.Translations
+import dev.adsa.multiplatformapp_passwordvault.ui.translations.t
 
 @Composable
 @Preview
 fun App() {
+    var language by remember { mutableStateOf(AppLanguage.EN) }
+
+    CompositionLocalProvider(LocalLanguage provides language) {
+
+    }
+
     MaterialTheme {
-        AppNavigation()
+        CompositionLocalProvider(LocalLanguage provides language) {
+            AppNavigation(
+                onLanguageChange = { language = it }
+            )
+        }
+
 //        var showContent by remember { mutableStateOf(false) }
 //        Column(
 //            modifier = Modifier
