@@ -7,6 +7,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import dev.adsa.multiplatformapp_passwordvault.ui.screens.MainScreen
 import dev.adsa.multiplatformapp_passwordvault.ui.screens.SecondScreen
+import dev.adsa.multiplatformapp_passwordvault.ui.screens.SettingsScreen
 
 @Composable
 fun AppNavigation() {
@@ -20,6 +21,11 @@ fun AppNavigation() {
         }
         AppScreens.SecondScreen.route -> {
             SecondScreen(
+                navigate = { route -> currentScreen = route}
+            )
+        }
+        AppScreens.SettingsScreen.route -> {
+            SettingsScreen(
                 navigate = { route -> currentScreen = route}
             )
         }

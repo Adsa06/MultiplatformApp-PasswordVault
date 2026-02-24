@@ -21,5 +21,10 @@ fun MainScreen(
         ) {
             Text("Ir a la pantalla secundaria")
         }
+        Button(
+            onClick = { navigate(AppScreens.SettingsScreen.route) }
+        ) {
+            Text("Ir a la pantalla de configuracion")
+        }
     }
 }

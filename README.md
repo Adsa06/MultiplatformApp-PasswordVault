@@ -38,3 +38,7 @@ in your IDE’s toolbar or run it directly from the terminal:
 ---
 
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+
+Resources:
+[light_theme_icon](https://www.svgrepo.com/svg/343299/sun)
+[dark_theme_icon](https://www.svgrepo.com/svg/343209/moon)
