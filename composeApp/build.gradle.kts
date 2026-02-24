@@ -43,6 +43,7 @@ kotlin {
     }
 }
 
+// extensions.configure<com.android.build.api.dsl.ApplicationExtension>("android")
 android {
     namespace = "dev.adsa.multiplatformapp_passwordvault"
     compileSdk = libs.versions.android.compileSdk.get().toInt()

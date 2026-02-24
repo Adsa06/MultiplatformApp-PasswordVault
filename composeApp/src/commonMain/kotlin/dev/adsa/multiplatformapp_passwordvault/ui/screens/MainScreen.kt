@@ -9,9 +9,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import dev.adsa.multiplatformapp_passwordvault.ui.navigation.AppScreens
+import dev.adsa.multiplatformapp_passwordvault.ui.resolution.WindowType
 
 @Composable
 fun MainScreen(
+    navigate: (String) -> Unit,
+    windowType: WindowType
+) {
+    when (windowType) {
+        WindowType.Compact -> CompactMainScreen(navigate)
+        WindowType.Medium -> MediumMainScreen(navigate)
+        WindowType.Expanded -> ExpandedMainScreen(navigate)
+    }
+}
+
+@Composable
+fun CompactMainScreen(
     navigate: (String) -> Unit
 ) {
     Column(
@@ -31,4 +44,18 @@ fun MainScreen(
             Text("Ir a la pantalla de configuracion")
         }
     }
+}
+
+@Composable
+fun MediumMainScreen(
+    navigate: (String) -> Unit
+) {
+    Text("Medium")
+}
+
+@Composable
+fun ExpandedMainScreen(
+    navigate: (String) -> Unit
+) {
+    Text("Expanded")
 }

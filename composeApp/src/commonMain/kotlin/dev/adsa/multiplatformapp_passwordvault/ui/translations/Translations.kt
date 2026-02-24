@@ -1,10 +1,10 @@
 package dev.adsa.multiplatformapp_passwordvault.ui.translations
 
 object Translations {
-    fun get(key: StringKey, lang: AppLanguage): String {
+    fun get(key: StringKey, lang: Language): String {
         return when (lang) {
-            AppLanguage.EN -> translateEn(key)
-            AppLanguage.ES -> translateEs(key)
+            Language.EN -> translateEn(key)
+            Language.ES -> translateEs(key)
         }
     }
 

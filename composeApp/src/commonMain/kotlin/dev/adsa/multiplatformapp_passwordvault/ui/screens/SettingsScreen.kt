@@ -24,7 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.adsa.multiplatformapp_passwordvault.ui.navigation.AppScreens
 import dev.adsa.multiplatformapp_passwordvault.ui.theme.LocalDarkTheme
-import dev.adsa.multiplatformapp_passwordvault.ui.translations.AppLanguage
+import dev.adsa.multiplatformapp_passwordvault.ui.translations.Language
 import dev.adsa.multiplatformapp_passwordvault.ui.translations.LocalLanguage
 import dev.adsa.multiplatformapp_passwordvault.ui.translations.StringKey
 import dev.adsa.multiplatformapp_passwordvault.ui.translations.t
@@ -35,7 +35,7 @@ import org.jetbrains.compose.resources.painterResource
 @Composable
 fun SettingsScreen(
     navigate: (String) -> Unit,
-    onLanguageChange: (AppLanguage) -> Unit,
+    onLanguageChange: (Language) -> Unit,
     onThemeChange: (Boolean) -> Unit
 ) {
     val currentLang = LocalLanguage.current
@@ -51,10 +51,10 @@ fun SettingsScreen(
         }
         Button(
             onClick = {
-                if(currentLang == AppLanguage.EN)
-                    onLanguageChange(AppLanguage.ES)
+                if(currentLang == Language.EN)
+                    onLanguageChange(Language.ES)
                 else
-                    onLanguageChange(AppLanguage.EN)
+                    onLanguageChange(Language.EN)
             }
         ) {
             Text("Idioma actual $currentLang")
