@@ -12,7 +12,8 @@ import dev.adsa.multiplatformapp_passwordvault.ui.translations.AppLanguage
 
 @Composable
 fun AppNavigation(
-    onLanguageChange: (AppLanguage) -> Unit
+    onLanguageChange: (AppLanguage) -> Unit,
+    onThemeChange: (Boolean) -> Unit
 ) {
     var currentScreen by remember { mutableStateOf(AppScreens.MainScreen.route) }
 
@@ -30,7 +31,8 @@ fun AppNavigation(
         AppScreens.SettingsScreen.route -> {
             SettingsScreen(
                 navigate = { route -> currentScreen = route},
-                onLanguageChange = onLanguageChange
+                onLanguageChange = onLanguageChange,
+                onThemeChange = onThemeChange
             )
         }
     }

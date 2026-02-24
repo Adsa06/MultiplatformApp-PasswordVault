@@ -14,6 +14,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,19 +23,23 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.adsa.multiplatformapp_passwordvault.ui.navigation.AppScreens
+import dev.adsa.multiplatformapp_passwordvault.ui.theme.LocalDarkTheme
 import dev.adsa.multiplatformapp_passwordvault.ui.translations.AppLanguage
+import dev.adsa.multiplatformapp_passwordvault.ui.translations.LocalLanguage
 import dev.adsa.multiplatformapp_passwordvault.ui.translations.StringKey
 import dev.adsa.multiplatformapp_passwordvault.ui.translations.t
-import multiplatformapppasswordvault.composeapp.generated.resources.AppearanceModeIcon
 import multiplatformapppasswordvault.composeapp.generated.resources.Res
 import multiplatformapppasswordvault.composeapp.generated.resources.dark_theme_icon
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.resources.stringResource
+
 @Composable
 fun SettingsScreen(
     navigate: (String) -> Unit,
-    onLanguageChange: (AppLanguage) -> Unit
+    onLanguageChange: (AppLanguage) -> Unit,
+    onThemeChange: (Boolean) -> Unit
 ) {
+    val currentLang = LocalLanguage.current
+    val isDark = LocalDarkTheme.current
     Column(
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -45,21 +50,30 @@ fun SettingsScreen(
             Text("Ir a la pantalla principal")
         }
         Button(
-            onClick = { onLanguageChange(AppLanguage.ES) }
+            onClick = {
+                if(currentLang == AppLanguage.EN)
+                    onLanguageChange(AppLanguage.ES)
+                else
+                    onLanguageChange(AppLanguage.EN)
+            }
         ) {
-            Text("Cambiar el a Español")
+            Text("Idioma actual $currentLang")
         }
         Button(
-            onClick = { onLanguageChange(AppLanguage.EN) }
+            onClick = { onThemeChange(!isDark) }
         ) {
-            Text("Cambiar el a Ingles")
+            Text("Cambiar modo del tema")
         }
-        SettingsCard()
+        SettingsCard {
+            Text("Adsa")
+        }
     }
 }
 
 @Composable
-fun SettingsCard() {
+fun SettingsCard(
+    actionContent: @Composable () -> Unit
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -98,12 +112,14 @@ fun SettingsCard() {
 
             ) {
                 Text(
-                    text = t(StringKey.AppearanceModeIcon)
+                    text = t(StringKey.AppearanceModeIcon),
+                    style = MaterialTheme.typography.titleMedium
                 )
                 Text(
                     text = t(StringKey.AppearanceModeIcon)
                 )
             }
+            actionContent()
         }
     }
 }
@@ -111,5 +127,5 @@ fun SettingsCard() {
 @Preview(showBackground = true)
 @Composable
 fun SettingsScreenPreview() {
-    SettingsScreen( { }, { })
+    SettingsScreen({ }, { }, { })
 }
