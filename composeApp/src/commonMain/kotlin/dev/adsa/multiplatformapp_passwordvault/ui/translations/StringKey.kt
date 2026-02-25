@@ -4,6 +4,10 @@ sealed interface StringKey {
     data object AppearanceModeIcon: StringKey
     data object GoBack: StringKey
     data object Configuration: StringKey
+    data object Appearance: StringKey
+    data object DataManagement: StringKey
+    data object Thema: StringKey
+    data class ThemaDescription(val thema: Boolean): StringKey
     data object Test: StringKey
     data class HolaNombre(val nombre: String): StringKey
 }

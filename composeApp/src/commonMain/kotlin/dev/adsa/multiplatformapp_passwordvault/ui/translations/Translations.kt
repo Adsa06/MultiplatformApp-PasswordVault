@@ -15,6 +15,10 @@ object Translations {
             StringKey.Test -> "Test"
             StringKey.GoBack -> "Go Back"
             StringKey.Configuration -> "Configuration"
+            StringKey.Appearance -> "Appearance"
+            StringKey.DataManagement -> "Data Management"
+            StringKey.Thema -> "Thema"
+            is StringKey.ThemaDescription -> if (key.thema) "Dark Mode" else "Light Mode"
         }
 
     private fun translateEs(key: StringKey): String =
@@ -24,5 +28,9 @@ object Translations {
             StringKey.Test -> "Test"
             StringKey.GoBack -> "Volver"
             StringKey.Configuration -> "Configuración"
+            StringKey.Appearance -> "Apariencia"
+            StringKey.DataManagement -> "Gestión de datos"
+            StringKey.Thema -> "Tema"
+            is StringKey.ThemaDescription -> if (key.thema) "Modo oscuro" else "Modo claro"
         }
 }
