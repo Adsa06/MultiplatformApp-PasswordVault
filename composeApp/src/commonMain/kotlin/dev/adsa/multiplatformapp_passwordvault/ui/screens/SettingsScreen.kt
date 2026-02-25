@@ -12,6 +12,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.adsa.multiplatformapp_passwordvault.ui.components.settings_components.AppearanceSettingsCard
@@ -78,7 +79,8 @@ fun CompactAndMediumSettingsScreen(
             AppearanceSettingsCard(
                 title = t(StringKey.Thema),
                 description = t(StringKey.ThemaDescription(isDark)),
-                icon = if (isDark) Res.drawable.dark_theme_icon else Res.drawable.light_theme_icon
+                icon = if (isDark) Res.drawable.dark_theme_icon else Res.drawable.light_theme_icon,
+                iconColor = if (isDark) Color.Blue else Color.Yellow
             ) {
                 SelectLanguaje(onLanguageChange = onLanguageChange)
             }

@@ -34,6 +34,7 @@ fun AppearanceSettingsCard(
     title: String,
     description: String,
     icon: DrawableResource,
+    iconColor: Color = Color.Unspecified,
     actionContent: @Composable () -> Unit
 ) {
     val customColors = LocalCustomColors.current
@@ -55,19 +56,20 @@ fun AppearanceSettingsCard(
         ) {
             Box(
                 modifier = Modifier
-                    .size(30.dp)
-                    .background(Color.LightGray, RoundedCornerShape(8.dp)),
+                    .size(45.dp)
+                    .background(Color(0x994a5568), RoundedCornerShape(8.dp)),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
                     painter = painterResource(icon),
                     contentDescription = t(StringKey.AppearanceModeIcon),
                     modifier = Modifier.fillMaxSize(0.7f),
-                    tint = Color.Unspecified
+                    tint = iconColor
                 )
             }
             Column(
-
+                modifier = Modifier
+                    .padding(start = 8.dp)
             ) {
                 Text(
                     text = title,
