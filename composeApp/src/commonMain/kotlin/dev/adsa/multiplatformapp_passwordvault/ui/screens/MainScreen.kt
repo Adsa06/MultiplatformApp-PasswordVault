@@ -34,7 +34,7 @@ fun CompactMainScreen(
     ) {
         Text("Pantalla principal")
         Button(
-            onClick = { navigate(AppScreens.SecondScreen.route) }
+            onClick = { navigate(AppScreens.DetailsScreen.route) }
         ) {
             Text("Ir a la pantalla secundaria")
         }

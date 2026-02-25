@@ -9,8 +9,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import dev.adsa.multiplatformapp_passwordvault.ui.resolution.rememberWindowType
+import dev.adsa.multiplatformapp_passwordvault.ui.screens.DetailsScreen
 import dev.adsa.multiplatformapp_passwordvault.ui.screens.MainScreen
-import dev.adsa.multiplatformapp_passwordvault.ui.screens.SecondScreen
 import dev.adsa.multiplatformapp_passwordvault.ui.screens.SettingsScreen
 import dev.adsa.multiplatformapp_passwordvault.ui.translations.Language
 
@@ -21,7 +21,7 @@ fun AppNavigation(
 ) {
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
         val windowType = rememberWindowType(maxWidth) // maxWidth viene del scope
-        var currentScreen by remember { mutableStateOf(AppScreens.MainScreen.route) }
+        var currentScreen by remember { mutableStateOf(AppScreens.SettingsScreen.route) }
 
         when (currentScreen) {
             AppScreens.MainScreen.route -> {
@@ -30,8 +30,8 @@ fun AppNavigation(
                     windowType = windowType
                 )
             }
-            AppScreens.SecondScreen.route -> {
-                SecondScreen(
+            AppScreens.DetailsScreen.route -> {
+                DetailsScreen(
                     navigate = { route -> currentScreen = route}
                 )
             }
@@ -39,7 +39,8 @@ fun AppNavigation(
                 SettingsScreen(
                     navigate = { route -> currentScreen = route},
                     onLanguageChange = onLanguageChange,
-                    onThemeChange = onThemeChange
+                    onThemeChange = onThemeChange,
+                    windowType = windowType
                 )
             }
         }

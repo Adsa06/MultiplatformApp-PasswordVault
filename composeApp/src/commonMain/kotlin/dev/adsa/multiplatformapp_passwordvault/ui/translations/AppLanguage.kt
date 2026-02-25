@@ -3,7 +3,7 @@ package dev.adsa.multiplatformapp_passwordvault.ui.translations
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.staticCompositionLocalOf
 
-val LocalLanguage = staticCompositionLocalOf<Language> { Language.EN }
+val LocalLanguage = staticCompositionLocalOf<Language> { Language.ES }
 
 @Composable
 fun t(key: StringKey): String {

@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import dev.adsa.multiplatformapp_passwordvault.ui.navigation.AppScreens
 
 @Composable
-fun SecondScreen(
+fun DetailsScreen(
     navigate: (String) -> Unit
 ) {
     Column(

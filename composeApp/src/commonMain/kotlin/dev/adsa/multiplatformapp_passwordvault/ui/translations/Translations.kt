@@ -13,6 +13,8 @@ object Translations {
             StringKey.AppearanceModeIcon -> "Appearance Mode Icon"
             is StringKey.HolaNombre -> "Welcome ${key.nombre}"
             StringKey.Test -> "Test"
+            StringKey.GoBack -> "Go Back"
+            StringKey.Configuration -> "Configuration"
         }
 
     private fun translateEs(key: StringKey): String =
@@ -20,5 +22,7 @@ object Translations {
             StringKey.AppearanceModeIcon -> "Icono de apariencia"
             is StringKey.HolaNombre -> "Bienvenido ${key.nombre}"
             StringKey.Test -> "Test"
+            StringKey.GoBack -> "Volver"
+            StringKey.Configuration -> "Configuración"
         }
 }
