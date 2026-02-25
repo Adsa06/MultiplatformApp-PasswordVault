@@ -8,6 +8,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
+val LocalDarkTheme = staticCompositionLocalOf<Boolean> { false }
+val LocalCustomColors = staticCompositionLocalOf<CustomColors> { CustomColors() }
+
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
     secondary = PurpleGrey80,
@@ -33,7 +36,19 @@ private val LightColorScheme = lightColorScheme(
     */
 )
 
-val LocalDarkTheme = staticCompositionLocalOf<Boolean> { false }
+val DarkCustomColors = CustomColors(
+    topbarBackground = darkTopbarBackground,
+    border = darkBorder,
+    text = darkText,
+    iconBack = Color.White
+)
+
+val LightCustomColors = CustomColors(
+    topbarBackground = lightTopbarBackground,
+    border = lightBorder,
+    text = lightText,
+    iconBack = Color.Black
+)
 
 @Composable
 fun MultiplatforAppBookShelfTheme(
@@ -41,6 +56,7 @@ fun MultiplatforAppBookShelfTheme(
     content: @Composable () -> Unit
 ) {
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
+
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
