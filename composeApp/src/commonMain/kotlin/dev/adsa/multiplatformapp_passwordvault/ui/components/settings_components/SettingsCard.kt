@@ -57,7 +57,7 @@ fun AppearanceSettingsCard(
             Box(
                 modifier = Modifier
                     .size(45.dp)
-                    .background(Color(0x994a5568), RoundedCornerShape(8.dp)),
+                    .background(Color(0x00000000), RoundedCornerShape(8.dp)),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(

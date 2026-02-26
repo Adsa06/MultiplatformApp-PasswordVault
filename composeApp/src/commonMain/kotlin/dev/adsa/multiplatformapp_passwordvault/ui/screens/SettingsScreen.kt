@@ -82,14 +82,14 @@ fun CompactAndMediumSettingsScreen(
                 icon = if (isDark) Res.drawable.dark_theme_icon else Res.drawable.light_theme_icon,
                 iconColor = if (isDark) Color.Blue else Color.Yellow
             ) {
-                SelectLanguaje(onLanguageChange = onLanguageChange)
+                ToggleTheme(onThemeChange = onThemeChange)
             }
             AppearanceSettingsCard(
                 title = t(StringKey.Thema),
                 description = t(StringKey.ThemaDescription(isDark)),
                 icon = Res.drawable.dark_theme_icon
             ) {
-                ToggleTheme(onThemeChange = onThemeChange)
+                SelectLanguaje(onLanguageChange = onLanguageChange)
             }
             Spacer(modifier = Modifier.height(4.dp))
             Text(

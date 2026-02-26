@@ -19,6 +19,7 @@ object Translations {
             StringKey.DataManagement -> "Data Management"
             StringKey.Thema -> "Thema"
             is StringKey.ThemaDescription -> if (key.thema) "Dark Mode" else "Light Mode"
+            StringKey.AppName -> "Vault"
         }
 
     private fun translateEs(key: StringKey): String =
@@ -32,5 +33,6 @@ object Translations {
             StringKey.DataManagement -> "Gestión de datos"
             StringKey.Thema -> "Tema"
             is StringKey.ThemaDescription -> if (key.thema) "Modo oscuro" else "Modo claro"
+            StringKey.AppName -> "Bóveda"
         }
 }
