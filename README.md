@@ -40,8 +40,10 @@ in your IDE’s toolbar or run it directly from the terminal:
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
 
 Resources:
-[app_icon](https://www.svgrepo.com/svg/288860/password)
-[light_theme_icon](https://www.svgrepo.com/svg/343299/sun)
-[dark_theme_icon](https://www.svgrepo.com/svg/343209/moon)
-[arrow_left](https://www.svgrepo.com/svg/342957/arrow-left)
-[world_icon](https://www.svgrepo.com/svg/359413/world)
+- [app_icon](https://www.svgrepo.com/svg/288860/password)
+- [light_theme_icon](https://www.svgrepo.com/svg/343299/sun)
+- [dark_theme_icon](https://www.svgrepo.com/svg/343209/moon)
+- [arrow_left](https://www.svgrepo.com/svg/342957/arrow-left)
+- [world_icon](https://www.svgrepo.com/svg/359413/world)
+- [import_icon](https://www.svgrepo.com/svg/438252/action-arrow-up-upload-upload-icon)
+  - [export_icon](https://www.svgrepo.com/svg/438251/action-arrow-down-download-save-icon)

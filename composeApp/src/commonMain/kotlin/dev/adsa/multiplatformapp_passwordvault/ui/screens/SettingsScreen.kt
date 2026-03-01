@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.adsa.multiplatformapp_passwordvault.ui.components.settings_components.AppearanceSettingsCard
+import dev.adsa.multiplatformapp_passwordvault.ui.components.settings_components.DataManagementSettingsCard
 import dev.adsa.multiplatformapp_passwordvault.ui.components.settings_components.SelectLanguaje
 import dev.adsa.multiplatformapp_passwordvault.ui.components.settings_components.SettingsTopBar
 import dev.adsa.multiplatformapp_passwordvault.ui.components.settings_components.ToggleTheme
@@ -28,6 +29,8 @@ import dev.adsa.multiplatformapp_passwordvault.ui.translations.StringKey
 import dev.adsa.multiplatformapp_passwordvault.ui.translations.t
 import multiplatformapppasswordvault.composeapp.generated.resources.Res
 import multiplatformapppasswordvault.composeapp.generated.resources.dark_theme_icon
+import multiplatformapppasswordvault.composeapp.generated.resources.export_icon
+import multiplatformapppasswordvault.composeapp.generated.resources.import_icon
 import multiplatformapppasswordvault.composeapp.generated.resources.light_theme_icon
 import multiplatformapppasswordvault.composeapp.generated.resources.world_icon
 
@@ -100,20 +103,20 @@ fun CompactAndMediumSettingsScreen(
                 text=t(StringKey.DataManagement),
                 color = customColors.text
             )
-            AppearanceSettingsCard(
-                title = t(StringKey.Thema),
-                description = t(StringKey.ThemaDescription(isDark)),
-                icon = Res.drawable.dark_theme_icon
-            ) {
-                SelectLanguaje(onLanguageChange = onLanguageChange)
-            }
-            AppearanceSettingsCard(
-                title = t(StringKey.Thema),
-                description = t(StringKey.ThemaDescription(isDark)),
-                icon = Res.drawable.dark_theme_icon
-            ) {
-                ToggleTheme(onThemeChange = onThemeChange)
-            }
+            DataManagementSettingsCard(
+                title = t(StringKey.Import),
+                description = t(StringKey.ImportDescription),
+                icon = Res.drawable.import_icon,
+                iconColor = Color.Green,
+                action = { println("home") }
+            )
+            DataManagementSettingsCard(
+                title = t(StringKey.Export),
+                description = t(StringKey.ExportDescription),
+                icon = Res.drawable.export_icon,
+                iconColor = Color.Blue,
+                action = { println("home1") }
+            )
         }
     }
 }

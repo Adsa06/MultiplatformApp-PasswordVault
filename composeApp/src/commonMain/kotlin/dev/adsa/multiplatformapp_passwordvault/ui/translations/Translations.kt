@@ -22,6 +22,10 @@ object Translations {
             StringKey.AppName -> "Vault"
             StringKey.Language -> "Language"
             is StringKey.LanguageDescription -> key.lang.lang
+            StringKey.Import -> "Import passwords"
+            StringKey.ImportDescription -> "Import from file"
+            StringKey.Export -> "Export passwords"
+            StringKey.ExportDescription -> "Export to file"
         }
 
     private fun translateEs(key: StringKey): String =
@@ -38,5 +42,9 @@ object Translations {
             StringKey.AppName -> "Bóveda"
             StringKey.Language -> "Idioma"
             is StringKey.LanguageDescription -> key.lang.lang
+            StringKey.Import -> "Importar contraseñas"
+            StringKey.ImportDescription -> "Importar de archivo"
+            StringKey.Export -> "Exportar contraseñas"
+            StringKey.ExportDescription -> "Exportar a archivo"
         }
 }

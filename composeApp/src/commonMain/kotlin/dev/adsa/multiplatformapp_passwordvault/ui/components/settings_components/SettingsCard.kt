@@ -2,6 +2,7 @@ package dev.adsa.multiplatformapp_passwordvault.ui.components.settings_component
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -92,6 +93,72 @@ fun AppearanceSettingsCard(
             }
             Spacer(modifier = Modifier.weight(1f))
             actionContent()
+        }
+    }
+}
+
+@Composable
+fun DataManagementSettingsCard(
+    title: String,
+    description: String,
+    icon: DrawableResource,
+    iconColor: Color = Color.Unspecified,
+    action: () -> Unit
+) {
+    val customColors = LocalCustomColors.current
+
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(color = Color(0x00000000))
+            .clickable(onClick = action),
+        border = BorderStroke(
+            width = 1.dp,
+            color = Color.Black,
+        ),
+        colors = CardColors(
+            containerColor = Color.Unspecified,
+            contentColor = Color.Unspecified,
+            disabledContainerColor = Color.Unspecified,
+            disabledContentColor = Color.Unspecified
+        ),
+        shape = RoundedCornerShape(6.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(color = customColors.cardBackground)
+                .padding(5.dp)
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(45.dp)
+                    .background(customColors.iconBackground, RoundedCornerShape(8.dp)),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    painter = painterResource(icon),
+                    contentDescription = t(StringKey.AppearanceModeIcon),
+                    modifier = Modifier.fillMaxSize(0.7f),
+                    tint = iconColor
+                )
+            }
+            Column(
+                modifier = Modifier
+                    .padding(start = 8.dp)
+            ) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.titleMedium,
+                    color = customColors.text
+                )
+                Text(
+                    text = description,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = customColors.text
+                )
+            }
+            Spacer(modifier = Modifier.weight(1f))
         }
     }
 }

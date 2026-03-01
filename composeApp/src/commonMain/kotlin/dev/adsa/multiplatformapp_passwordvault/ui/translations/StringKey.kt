@@ -12,6 +12,12 @@ sealed interface StringKey {
     data object Language : StringKey
     data class LanguageDescription(val lang: Languages): StringKey
     data object AppName: StringKey
+
+    data object Import : StringKey
+    data object ImportDescription : StringKey
+    data object Export : StringKey
+    data object ExportDescription : StringKey
+
     data object Test: StringKey
     data class HolaNombre(val nombre: String): StringKey
 }
