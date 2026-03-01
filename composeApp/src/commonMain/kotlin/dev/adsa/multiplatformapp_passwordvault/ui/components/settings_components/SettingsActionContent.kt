@@ -1,9 +1,17 @@
 package dev.adsa.multiplatformapp_passwordvault.ui.components.settings_components
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import dev.adsa.multiplatformapp_passwordvault.ui.theme.LocalDarkTheme
 import dev.adsa.multiplatformapp_passwordvault.ui.translations.Language
 import dev.adsa.multiplatformapp_passwordvault.ui.translations.LocalLanguage
@@ -11,16 +19,25 @@ import dev.adsa.multiplatformapp_passwordvault.ui.translations.LocalLanguage
 @Composable
 fun SelectLanguaje(onLanguageChange: (Language) -> Unit) {
     val currentLang = LocalLanguage.current
-    Column {
-        Button(
-            onClick = {
-                if(currentLang == Language.EN)
-                    onLanguageChange(Language.ES)
-                else
-                    onLanguageChange(Language.EN)
-            }
+    var expanded by remember { mutableStateOf(false) }
+
+    Box() {
+        Button(onClick = { expanded = true }) {
+            Text(currentLang.lang)
+        }
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false }
         ) {
-            Text("Select languaje")
+            Language.entries.forEach {
+                DropdownMenuItem(
+                    text = { Text(it.lang) },
+                    onClick = {
+                        onLanguageChange(it)
+                        expanded = false
+                    }
+                )
+            }
         }
     }
 }
@@ -28,11 +45,8 @@ fun SelectLanguaje(onLanguageChange: (Language) -> Unit) {
 @Composable
 fun ToggleTheme(onThemeChange: (Boolean) -> Unit) {
     val isDark = LocalDarkTheme.current
-    Column {
-        Button(
-            onClick = { onThemeChange(!isDark) }
-        ) {
-            Text("Toggle theme")
-        }
-    }
+    Switch(
+        checked = isDark,
+        onCheckedChange = { onThemeChange(it) }
+    )
 }

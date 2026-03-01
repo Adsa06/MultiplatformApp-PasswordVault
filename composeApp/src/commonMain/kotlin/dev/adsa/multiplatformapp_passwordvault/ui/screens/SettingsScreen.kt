@@ -3,14 +3,17 @@ package dev.adsa.multiplatformapp_passwordvault.ui.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -48,7 +51,6 @@ fun SettingsScreen(
             onThemeChange = onThemeChange
         )
         WindowType.Expanded -> ExpandedSettingsScreen(
-            navigate = navigate,
             onLanguageChange = onLanguageChange,
             onThemeChange = onThemeChange
         )
@@ -123,11 +125,83 @@ fun CompactAndMediumSettingsScreen(
 
 @Composable
 fun ExpandedSettingsScreen(
-    navigate: (String) -> Unit,
     onLanguageChange: (Language) -> Unit,
     onThemeChange: (Boolean) -> Unit
 ) {
-    Text("Expanded")
+    val customColors = LocalCustomColors.current
+    val isDark = LocalDarkTheme.current
+    val currentLang = LocalLanguage.current
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+            .padding(12.dp)
+    ) {
+        Text(
+            text = t(StringKey.Configuration),
+            style = MaterialTheme.typography.headlineLarge,
+            color = customColors.text
+        )
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            Column(
+                modifier = Modifier
+                    .weight(1f),
+                verticalArrangement = Arrangement.spacedBy(4.dp),
+                horizontalAlignment = Alignment.Start
+            ) {
+                Text(
+                    text=t(StringKey.Appearance),
+                    color = customColors.text
+                )
+                AppearanceSettingsCard(
+                    title = t(StringKey.Thema),
+                    description = t(StringKey.ThemaDescription(isDark)),
+                    icon = if (isDark) Res.drawable.dark_theme_icon else Res.drawable.light_theme_icon,
+                    iconColor = if (isDark) Color.Blue else Color(0xffe6d125)
+                ) {
+                    ToggleTheme(onThemeChange = onThemeChange)
+                }
+                AppearanceSettingsCard(
+                    title = t(StringKey.Language),
+                    description = t(StringKey.LanguageDescription(currentLang)),
+                    icon = Res.drawable.world_icon,
+                    iconColor = Color.Blue
+                ) {
+                    SelectLanguaje(onLanguageChange = onLanguageChange)
+                }
+            }
+            Column(
+                modifier = Modifier
+                    .weight(1f),
+                verticalArrangement = Arrangement.spacedBy(4.dp),
+                horizontalAlignment = Alignment.Start
+            ) {
+                Text(
+                    text=t(StringKey.DataManagement),
+                    color = customColors.text
+                )
+                DataManagementSettingsCard(
+                    title = t(StringKey.Import),
+                    description = t(StringKey.ImportDescription),
+                    icon = Res.drawable.import_icon,
+                    iconColor = Color.Green,
+                    action = { println("home") }
+                )
+                DataManagementSettingsCard(
+                    title = t(StringKey.Export),
+                    description = t(StringKey.ExportDescription),
+                    icon = Res.drawable.export_icon,
+                    iconColor = Color.Blue,
+                    action = { println("home1") }
+                )
+            }
+        }
+    }
 }
 
 
@@ -139,6 +213,6 @@ fun SettingsScreenPreview() {
         navigate = { },
         onLanguageChange = { },
         onThemeChange = { },
-        windowType = WindowType.Compact
+        windowType = WindowType.Expanded
     )
 }
