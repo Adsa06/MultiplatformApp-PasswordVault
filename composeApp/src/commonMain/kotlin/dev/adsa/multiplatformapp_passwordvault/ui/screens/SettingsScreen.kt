@@ -23,11 +23,13 @@ import dev.adsa.multiplatformapp_passwordvault.ui.resolution.WindowType
 import dev.adsa.multiplatformapp_passwordvault.ui.theme.LocalCustomColors
 import dev.adsa.multiplatformapp_passwordvault.ui.theme.LocalDarkTheme
 import dev.adsa.multiplatformapp_passwordvault.ui.translations.Language
+import dev.adsa.multiplatformapp_passwordvault.ui.translations.LocalLanguage
 import dev.adsa.multiplatformapp_passwordvault.ui.translations.StringKey
 import dev.adsa.multiplatformapp_passwordvault.ui.translations.t
 import multiplatformapppasswordvault.composeapp.generated.resources.Res
 import multiplatformapppasswordvault.composeapp.generated.resources.dark_theme_icon
 import multiplatformapppasswordvault.composeapp.generated.resources.light_theme_icon
+import multiplatformapppasswordvault.composeapp.generated.resources.world_icon
 
 @Composable
 fun SettingsScreen(
@@ -58,6 +60,7 @@ fun CompactAndMediumSettingsScreen(
 ) {
     val customColors = LocalCustomColors.current
     val isDark = LocalDarkTheme.current
+    val currentLang = LocalLanguage.current
 
     Column(
         modifier = Modifier
@@ -80,14 +83,15 @@ fun CompactAndMediumSettingsScreen(
                 title = t(StringKey.Thema),
                 description = t(StringKey.ThemaDescription(isDark)),
                 icon = if (isDark) Res.drawable.dark_theme_icon else Res.drawable.light_theme_icon,
-                iconColor = if (isDark) Color.Blue else Color.Yellow
+                iconColor = if (isDark) Color.Blue else Color(0xffe6d125)
             ) {
                 ToggleTheme(onThemeChange = onThemeChange)
             }
             AppearanceSettingsCard(
-                title = t(StringKey.Thema),
-                description = t(StringKey.ThemaDescription(isDark)),
-                icon = Res.drawable.dark_theme_icon
+                title = t(StringKey.Language),
+                description = t(StringKey.LanguageDescription(currentLang)),
+                icon = Res.drawable.world_icon,
+                iconColor = Color.Blue
             ) {
                 SelectLanguaje(onLanguageChange = onLanguageChange)
             }

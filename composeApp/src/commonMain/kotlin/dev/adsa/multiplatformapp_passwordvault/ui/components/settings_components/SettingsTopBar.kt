@@ -3,26 +3,18 @@ package dev.adsa.multiplatformapp_passwordvault.ui.components.settings_component
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.shape.AbsoluteCutCornerShape
-import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.adsa.multiplatformapp_passwordvault.ui.navigation.AppScreens
@@ -30,8 +22,7 @@ import dev.adsa.multiplatformapp_passwordvault.ui.theme.LocalCustomColors
 import dev.adsa.multiplatformapp_passwordvault.ui.translations.StringKey
 import dev.adsa.multiplatformapp_passwordvault.ui.translations.t
 import multiplatformapppasswordvault.composeapp.generated.resources.Res
-import multiplatformapppasswordvault.composeapp.generated.resources.arrow_left
-import multiplatformapppasswordvault.composeapp.generated.resources.dark_theme_icon
+import multiplatformapppasswordvault.composeapp.generated.resources.arrow_left_icon
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
@@ -58,9 +49,9 @@ fun SettingsTopBar(
             ) {
                 Icon(
                     modifier = Modifier.fillMaxSize(0.7f),
-                    painter = painterResource(Res.drawable.arrow_left),
+                    painter = painterResource(Res.drawable.arrow_left_icon),
                     contentDescription = t(StringKey.GoBack),
-                    tint = customColors.iconBack
+                    tint = customColors.icon
                 )
             }
             Text(

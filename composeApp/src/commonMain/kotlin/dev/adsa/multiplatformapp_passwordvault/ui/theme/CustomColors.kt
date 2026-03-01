@@ -6,5 +6,7 @@ data class CustomColors(
     val topbarBackground: Color = Color.Unspecified,
     val border: Color = Color.Unspecified,
     val text: Color = Color.Unspecified,
-    val iconBack: Color = Color.Unspecified
+    val iconBackground: Color = Color.Unspecified,
+    val icon: Color = Color.Unspecified,
+    val cardBackground: Color = Color.Unspecified
 )

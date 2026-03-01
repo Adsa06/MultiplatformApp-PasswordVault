@@ -40,14 +40,18 @@ val DarkCustomColors = CustomColors(
     topbarBackground = darkTopbarBackground,
     border = darkBorder,
     text = darkText,
-    iconBack = Color.White
+    iconBackground = darkIconBackground,
+    cardBackground = darkCardBackground,
+    icon = darkIcon
 )
 
 val LightCustomColors = CustomColors(
     topbarBackground = lightTopbarBackground,
     border = lightBorder,
     text = lightText,
-    iconBack = Color.Black
+    iconBackground = lightIconBackground,
+    cardBackground = lightCardBackground,
+    icon = lightIcon
 )
 
 @Composable

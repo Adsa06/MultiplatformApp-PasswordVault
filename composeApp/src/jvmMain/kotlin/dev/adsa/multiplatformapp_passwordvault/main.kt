@@ -26,68 +26,12 @@ import multiplatformapppasswordvault.composeapp.generated.resources.Res
 import multiplatformapppasswordvault.composeapp.generated.resources.app_icon
 import org.jetbrains.compose.resources.painterResource
 
-@OptIn(ExperimentalMaterial3Api::class)
 fun main() = application {
-    val windowState = rememberWindowState()
     Window(
         onCloseRequest = ::exitApplication,
-        state = windowState,
-        undecorated = true,
         title = t(StringKey.AppName),
         icon = painterResource(Res.drawable.app_icon)
     ) {
-        Column {
-            WindowDraggableArea(
-                modifier = Modifier
-                    .pointerInput(Unit) {
-                        detectTapGestures(
-                            onDoubleTap = {
-                                windowState.placement = if (windowState.placement == WindowPlacement.Maximized) {
-                                    WindowPlacement.Floating
-                                } else {
-                                    WindowPlacement.Maximized
-                                }
-                            }
-                        )
-                    }
-                    .pointerInput(windowState.placement) {
-                        if (windowState.placement == WindowPlacement.Maximized) {
-                            detectDragGestures { _, _ ->
-                                windowState.placement = WindowPlacement.Floating
-                            }
-                        }
-                    }
-            ) {
-                TopAppBar(
-                    title = { Text(t(StringKey.AppName)) },
-                    actions = {
-                        IconButton(onClick = {
-                            windowState.isMinimized = true
-                        }) {
-                            Icon(Icons.Filled.Remove, contentDescription = "Minimizar")
-                        }
-                        IconButton(onClick = {
-                            if (windowState.placement == WindowPlacement.Maximized) {
-                                windowState.placement = WindowPlacement.Floating
-                            } else {
-                                windowState.placement = WindowPlacement.Maximized
-                            }
-                        }) {
-                            if (windowState.placement == WindowPlacement.Maximized) {
-                                Icon(Icons.Filled.FilterNone, contentDescription = "Restaurar")
-                            } else {
-                                Icon(Icons.Filled.CheckBoxOutlineBlank, contentDescription = "Maximizar")
-                            }
-                        }
-                        IconButton(onClick = {
-                            exitApplication()
-                        }) {
-                            Icon(Icons.Filled.Close, contentDescription = "Cerrar")
-                        }
-                    }
-                )
-            }
-            App()
-        }
+        App()
     }
 }

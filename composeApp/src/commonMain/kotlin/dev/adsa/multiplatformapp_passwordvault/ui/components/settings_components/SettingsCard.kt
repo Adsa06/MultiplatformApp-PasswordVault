@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -42,22 +43,29 @@ fun AppearanceSettingsCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .background(color = MaterialTheme.colorScheme.background),
+            .background(color = Color(0x00000000)),
         border = BorderStroke(
             width = 1.dp,
             color = Color.Black,
+        ),
+        colors = CardColors(
+            containerColor = Color.Unspecified,
+            contentColor = Color.Unspecified,
+            disabledContainerColor = Color.Unspecified,
+            disabledContentColor = Color.Unspecified
         ),
         shape = RoundedCornerShape(6.dp)
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
+                .background(color = customColors.cardBackground)
                 .padding(5.dp)
         ) {
             Box(
                 modifier = Modifier
                     .size(45.dp)
-                    .background(Color(0x00000000), RoundedCornerShape(8.dp)),
+                    .background(customColors.iconBackground, RoundedCornerShape(8.dp)),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(

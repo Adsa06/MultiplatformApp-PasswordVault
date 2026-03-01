@@ -44,3 +44,4 @@ Resources:
 [light_theme_icon](https://www.svgrepo.com/svg/343299/sun)
 [dark_theme_icon](https://www.svgrepo.com/svg/343209/moon)
 [arrow_left](https://www.svgrepo.com/svg/342957/arrow-left)
+[world_icon](https://www.svgrepo.com/svg/359413/world)
