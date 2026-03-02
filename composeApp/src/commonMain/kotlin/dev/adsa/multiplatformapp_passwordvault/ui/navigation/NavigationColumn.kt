@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -22,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.adsa.multiplatformapp_passwordvault.ui.components.settings_components.SelectLanguaje
 import dev.adsa.multiplatformapp_passwordvault.ui.components.settings_components.ToggleTheme
@@ -79,14 +81,17 @@ fun NavigationColumn(
         }
         HorizontalDivider(modifier = Modifier.fillMaxWidth(), color = customColors.dividir, thickness = 1.dp)
         Column(
-            modifier = Modifier.weight(1f)
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxSize().weight(1f)
         ) {
             Card(
-                modifier = Modifier
-                    .clickable(onClick = { navigate(AppScreens.MainScreen.route) } )
-                    .padding()
             ) {
-                Row {
+                Row(
+                    modifier = Modifier
+                        .width(190.dp)
+                        .clickable(onClick = { navigate(AppScreens.MainScreen.route) } )
+                ) {
                     Icon(
                         painter = painterResource(Res.drawable.app_icon),
                         contentDescription = t(StringKey.PasswordSection),
@@ -99,7 +104,6 @@ fun NavigationColumn(
             Card(
                 modifier = Modifier
                     .clickable(onClick = { navigate(AppScreens.SettingsScreen.route) } )
-                    .padding()
             ) {
                 Row {
                     Icon(
@@ -117,17 +121,23 @@ fun NavigationColumn(
             horizontalArrangement = Arrangement.Start,
         ) {
             Icon(
-                painter = painterResource(Res.drawable.world_icon),
-                contentDescription = t(StringKey.Language),
-                modifier = Modifier.size(30.dp)
+                painter = painterResource(if (isDark) Res.drawable.dark_theme_icon else Res.drawable.light_theme_icon),
+                contentDescription = t(StringKey.Appearance),
+                modifier = Modifier.size(40.dp).padding(horizontal = 8.dp),
+                tint = if (isDark) Color.Blue else Color(0xffe6d125)
             )
             Text(
-                text = t(StringKey.Language),
-                modifier = Modifier.weight(1f)
+                text = t(StringKey.Appearance),
+                style = MaterialTheme.typography.bodyMedium,
+                color = customColors.text,
+                modifier = Modifier
+                    .weight(1f)
             )
-            SelectLanguaje(
-                modifier = Modifier.scale(0.5f),
-                onLanguageChange = onLanguageChange
+            ToggleTheme(
+                modifier = Modifier
+                    .offset(x = (8).dp)
+                    .scale(0.5f),
+                onThemeChange = onThemeChange
             )
         }
         Row(
@@ -135,20 +145,33 @@ fun NavigationColumn(
             horizontalArrangement = Arrangement.Start,
         ) {
             Icon(
-                painter = painterResource(if (isDark) Res.drawable.dark_theme_icon else Res.drawable.light_theme_icon),
-                contentDescription = t(StringKey.Appearance),
-                modifier = Modifier.size(30.dp).scale(0.5f)
+                painter = painterResource(Res.drawable.world_icon),
+                contentDescription = t(StringKey.Language),
+                modifier = Modifier.size(40.dp).padding(horizontal = 8.dp),
+                tint = Color.Blue
             )
             Text(
-                text = t(StringKey.Appearance),
-                modifier = Modifier
-                    .weight(1f)
-                    .scale(0.5f)
+                text = t(StringKey.Language),
+                style = MaterialTheme.typography.bodyMedium,
+                color = customColors.text,
+                modifier = Modifier.weight(1f)
             )
-            ToggleTheme(
-                modifier = Modifier.scale(0.5f),
-                onThemeChange = onThemeChange
+            SelectLanguaje(
+                modifier = Modifier
+                    .offset(x = (8).dp)
+                    .scale(0.75f),
+                onLanguageChange = onLanguageChange
             )
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun NavigationColumnPreview() {
+    NavigationColumn(
+        navigate = { },
+        onLanguageChange = { },
+        onThemeChange = { }
+    )
 }
