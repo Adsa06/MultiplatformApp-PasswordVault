@@ -42,7 +42,8 @@ val DarkCustomColors = CustomColors(
     text = darkText,
     iconBackground = darkIconBackground,
     cardBackground = darkCardBackground,
-    icon = darkIcon
+    icon = darkIcon,
+    dividir = darkDividir
 )
 
 val LightCustomColors = CustomColors(
@@ -51,7 +52,8 @@ val LightCustomColors = CustomColors(
     text = lightText,
     iconBackground = lightIconBackground,
     cardBackground = lightCardBackground,
-    icon = lightIcon
+    icon = lightIcon,
+    dividir = lightDividir
 )
 
 @Composable

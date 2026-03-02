@@ -26,6 +26,7 @@ object Translations {
             StringKey.ImportDescription -> "Import from file"
             StringKey.Export -> "Export passwords"
             StringKey.ExportDescription -> "Export to file"
+            StringKey.PasswordSection -> "Passwords"
         }
 
     private fun translateEs(key: StringKey): String =
@@ -46,5 +47,6 @@ object Translations {
             StringKey.ImportDescription -> "Importar de archivo"
             StringKey.Export -> "Exportar contraseñas"
             StringKey.ExportDescription -> "Exportar a archivo"
+            StringKey.PasswordSection -> "Contraseñas"
         }
 }

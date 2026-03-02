@@ -17,6 +17,7 @@ sealed interface StringKey {
     data object ImportDescription : StringKey
     data object Export : StringKey
     data object ExportDescription : StringKey
+    data object PasswordSection: StringKey
 
     data object Test: StringKey
     data class HolaNombre(val nombre: String): StringKey

@@ -12,17 +12,24 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import dev.adsa.multiplatformapp_passwordvault.ui.theme.LocalDarkTheme
 import dev.adsa.multiplatformapp_passwordvault.ui.translations.Language
 import dev.adsa.multiplatformapp_passwordvault.ui.translations.LocalLanguage
 
 @Composable
-fun SelectLanguaje(onLanguageChange: (Language) -> Unit) {
+fun SelectLanguaje(
+    modifier: Modifier = Modifier,
+    onLanguageChange: (Language) -> Unit
+) {
     val currentLang = LocalLanguage.current
     var expanded by remember { mutableStateOf(false) }
 
     Box() {
-        Button(onClick = { expanded = true }) {
+        Button(
+            modifier = modifier,
+            onClick = { expanded = true }
+        ) {
             Text(currentLang.lang)
         }
         DropdownMenu(
@@ -43,9 +50,13 @@ fun SelectLanguaje(onLanguageChange: (Language) -> Unit) {
 }
 
 @Composable
-fun ToggleTheme(onThemeChange: (Boolean) -> Unit) {
+fun ToggleTheme(
+    modifier: Modifier = Modifier,
+    onThemeChange: (Boolean) -> Unit
+) {
     val isDark = LocalDarkTheme.current
     Switch(
+        modifier = modifier,
         checked = isDark,
         onCheckedChange = { onThemeChange(it) }
     )

@@ -18,6 +18,7 @@ val darkText = Color(0xffffffff)
 val darkCardBackground = Color(0xff2d3748)
 val darkIconBackground = Color(0xff4a5568)
 val darkIcon = Color.White
+val darkDividir = Color(0xff555555)
 
 
 
@@ -29,3 +30,4 @@ val lightText = Color(0xff1a202c)
 val lightCardBackground = Color(0xffffffff)
 val lightIconBackground = Color(0xfff7fafc)
 val lightIcon = Color.Black
+val lightDividir = Color(0xffcccccc)
