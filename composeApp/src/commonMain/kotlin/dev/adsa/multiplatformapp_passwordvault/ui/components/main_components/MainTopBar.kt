@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -17,6 +18,7 @@ import androidx.compose.material3.CardColors
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -53,52 +55,71 @@ fun MainTopBar(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(50.dp),
-            verticalAlignment = Alignment.CenterVertically
+                .height(50.dp)
+                .padding(horizontal = 10.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
+            Text(
+                text = t(StringKey.MyPasswords),
+                color = customColors.text,
+                style = MaterialTheme.typography.bodyMedium
+            )
             IconButton(
-                onClick = { navigate(AppScreens.MainScreen.route) },
+                modifier = Modifier.offset(x = (8).dp),
+                onClick = { navigate(AppScreens.SettingsScreen.route) },
                 shape = RoundedCornerShape(16.dp),
             ) {
                 Icon(
                     modifier = Modifier.fillMaxSize(0.7f),
                     painter = painterResource(Res.drawable.arrow_left_icon),
-                    contentDescription = t(StringKey.GoBack),
+                    contentDescription = t(StringKey.Configuration),
                     tint = customColors.icon
                 )
             }
-            Text(
-                text = t(StringKey.Configuration),
-                color = customColors.text
-            )
         }
         BasicTextField(
             value = query,
             onValueChange = { onQueryChange(it) },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(20.dp),
+                .height(32.dp)
+                .padding(bottom = 5.dp)
+                .padding(horizontal = 10.dp),
             singleLine = true,
             decorationBox = { innerTextField ->
                 Card(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .padding(horizontal = 20.dp),
+                        .fillMaxSize(),
                     colors = CardColors(
                         containerColor = Color.Unspecified,
                         contentColor = Color.Unspecified,
                         disabledContainerColor = Color.Unspecified,
                         disabledContentColor = Color.Unspecified),
                 ) {
-                    Box(
+                    Row(
                         modifier = Modifier
                             .fillMaxSize()
                             .background(color = Color(0xff888888))
+                            .padding(horizontal = 8.dp),
                     ) {
-                        if(query.isEmpty()) {
-                            Text(t(StringKey.SearchPassword))
+                        Icon(
+                            painter = painterResource(Res.drawable.arrow_left_icon),
+                            contentDescription = t(StringKey.SearchPassword)
+                        )
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize(),
+                            contentAlignment = Alignment.CenterStart
+                        ) {
+                            if(query.isEmpty()) {
+                                Text(
+                                    text = t(StringKey.SearchPassword),
+                                    style = MaterialTheme.typography.bodyMedium
+                                )
+                            }
+                            innerTextField()
                         }
-                        innerTextField()
                     }
                 }
             }

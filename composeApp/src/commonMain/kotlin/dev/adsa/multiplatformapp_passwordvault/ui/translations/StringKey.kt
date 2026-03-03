@@ -20,6 +20,7 @@ sealed interface StringKey {
     data object PasswordSection: StringKey
 
     data object SearchPassword: StringKey
+    data object MyPasswords: StringKey
 
     data object Test: StringKey
     data class HolaNombre(val nombre: String): StringKey
