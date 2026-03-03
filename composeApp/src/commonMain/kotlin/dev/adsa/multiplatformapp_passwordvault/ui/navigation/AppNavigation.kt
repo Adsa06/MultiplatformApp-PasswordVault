@@ -35,6 +35,7 @@ fun AppNavigation(
         ) {
             if(windowType == WindowType.Expanded) {
                 NavigationColumn(
+                    currentScreen = currentScreen,
                     navigate = { route -> currentScreen = route},
                     onLanguageChange = onLanguageChange,
                     onThemeChange = onThemeChange

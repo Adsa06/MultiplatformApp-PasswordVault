@@ -6,8 +6,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -43,7 +45,8 @@ import org.jetbrains.compose.resources.painterResource
 fun NavigationColumn(
     navigate: (String) -> Unit,
     onLanguageChange: (Language) -> Unit,
-    onThemeChange: (Boolean) -> Unit
+    onThemeChange: (Boolean) -> Unit,
+    currentScreen: String,
 ) {
     val customColors = LocalCustomColors.current
     val isDark = LocalDarkTheme.current
@@ -76,42 +79,62 @@ fun NavigationColumn(
             }
             Text(
                 text = t(StringKey.AppName),
+                color = customColors.text,
                 style = MaterialTheme.typography.titleLarge
             )
         }
         HorizontalDivider(modifier = Modifier.fillMaxWidth(), color = customColors.dividir, thickness = 1.dp)
         Column(
-            verticalArrangement = Arrangement.spacedBy(4.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxSize().weight(1f)
         ) {
-            Card(
-            ) {
+            Spacer(modifier = Modifier.height(8.dp))
+            Card {
                 Row(
                     modifier = Modifier
-                        .width(190.dp)
+                        .width(170.dp)
                         .clickable(onClick = { navigate(AppScreens.MainScreen.route) } )
+                        .background(color = if(AppScreens.MainScreen.route == currentScreen) Color.Blue else customColors.topbarBackground),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Start
                 ) {
                     Icon(
                         painter = painterResource(Res.drawable.app_icon),
                         contentDescription = t(StringKey.PasswordSection),
-                        modifier = Modifier.size(50.dp)
+                        modifier = Modifier
+                            .size(50.dp)
+                            .padding(start = 6.dp)
+                            .offset(y = 4.dp)
                     )
-                    Text(text = t(StringKey.PasswordSection))
+                    Text(
+                        text = t(StringKey.PasswordSection),
+                        modifier = Modifier.padding(start = 6.dp)
+                    )
                 }
             }
 
-            Card(
-                modifier = Modifier
-                    .clickable(onClick = { navigate(AppScreens.SettingsScreen.route) } )
-            ) {
-                Row {
+            Card {
+                Row(
+                    modifier = Modifier
+                        .width(170.dp)
+                        .clickable(onClick = { navigate(AppScreens.SettingsScreen.route) } )
+                        .background(color = if(AppScreens.SettingsScreen.route == currentScreen) Color.Blue else customColors.topbarBackground),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Start
+                ) {
                     Icon(
                         painter = painterResource(Res.drawable.app_icon),
                         contentDescription = t(StringKey.Configuration),
-                        modifier = Modifier.size(50.dp)
+                        modifier = Modifier
+                            .size(50.dp)
+                            .padding(start = 6.dp)
+                            .offset(y = 4.dp)
                     )
-                    Text(text = t(StringKey.Configuration))
+                    Text(
+                        text = t(StringKey.Configuration),
+                        modifier = Modifier.padding(start = 6.dp)
+                    )
                 }
             }
         }
@@ -135,7 +158,7 @@ fun NavigationColumn(
             )
             ToggleTheme(
                 modifier = Modifier
-                    .offset(x = (8).dp)
+                    .offset(x = 8.dp)
                     .scale(0.5f),
                 onThemeChange = onThemeChange
             )
@@ -172,6 +195,7 @@ fun NavigationColumnPreview() {
     NavigationColumn(
         navigate = { },
         onLanguageChange = { },
-        onThemeChange = { }
+        onThemeChange = { },
+        currentScreen = ""
     )
 }
