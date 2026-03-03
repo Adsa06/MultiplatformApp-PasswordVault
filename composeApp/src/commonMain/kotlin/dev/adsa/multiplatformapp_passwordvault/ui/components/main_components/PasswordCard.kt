@@ -52,7 +52,7 @@ fun PasswordCard(
                     )
                 }
             }
-            Text(if(showPassword) "··············" else decrypt(password.password))
+            Text(text = (password.password ?: "·".repeat(21)))
             Row() {
                 Button(onClick = {}) {
 
