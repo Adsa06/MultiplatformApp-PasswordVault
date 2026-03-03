@@ -109,6 +109,7 @@ fun NavigationColumn(
                     )
                     Text(
                         text = t(StringKey.PasswordSection),
+                        color = if(AppScreens.MainScreen.route == currentScreen) Color.White else customColors.text,
                         modifier = Modifier.padding(start = 6.dp)
                     )
                 }
@@ -133,6 +134,7 @@ fun NavigationColumn(
                     )
                     Text(
                         text = t(StringKey.Configuration),
+                        color = if(AppScreens.SettingsScreen.route == currentScreen) Color.White else customColors.text,
                         modifier = Modifier.padding(start = 6.dp)
                     )
                 }
