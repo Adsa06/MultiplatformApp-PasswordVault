@@ -83,7 +83,7 @@ fun NavigationColumn(
                 style = MaterialTheme.typography.titleLarge
             )
         }
-        HorizontalDivider(modifier = Modifier.fillMaxWidth(), color = customColors.dividir, thickness = 1.dp)
+        HorizontalDivider(modifier = Modifier.fillMaxWidth(), color = customColors.divider, thickness = 1.dp)
         Column(
             verticalArrangement = Arrangement.spacedBy(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -140,7 +140,7 @@ fun NavigationColumn(
                 }
             }
         }
-        HorizontalDivider(modifier = Modifier.fillMaxWidth(), color = customColors.dividir, thickness = 1.dp)
+        HorizontalDivider(modifier = Modifier.fillMaxWidth(), color = customColors.divider, thickness = 1.dp)
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Start,

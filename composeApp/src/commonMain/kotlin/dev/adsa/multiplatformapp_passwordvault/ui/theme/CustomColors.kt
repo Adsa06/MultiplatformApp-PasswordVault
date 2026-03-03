@@ -9,5 +9,6 @@ data class CustomColors(
     val iconBackground: Color = Color.Unspecified,
     val icon: Color = Color.Unspecified,
     val cardBackground: Color = Color.Unspecified,
-    val dividir: Color = Color.Unspecified
+    val divider: Color = Color.Unspecified,
+    val fieldBackground: Color = Color.Unspecified
 )

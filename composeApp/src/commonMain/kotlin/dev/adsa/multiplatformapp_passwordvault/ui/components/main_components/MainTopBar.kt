@@ -100,7 +100,7 @@ fun MainTopBar(
                     Row(
                         modifier = Modifier
                             .fillMaxSize()
-                            .background(color = Color(0xff888888))
+                            .background(color = customColors.fieldBackground)
                             .padding(horizontal = 8.dp),
                     ) {
                         Icon(
@@ -115,6 +115,7 @@ fun MainTopBar(
                             if(query.isEmpty()) {
                                 Text(
                                     text = t(StringKey.SearchPassword),
+                                    modifier = Modifier.offset(y = (-2).dp),
                                     style = MaterialTheme.typography.bodyMedium
                                 )
                             }
