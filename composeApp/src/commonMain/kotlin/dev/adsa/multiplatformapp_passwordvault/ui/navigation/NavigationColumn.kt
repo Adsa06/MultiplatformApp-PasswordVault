@@ -83,7 +83,7 @@ fun NavigationColumn(
                 style = MaterialTheme.typography.titleLarge
             )
         }
-        HorizontalDivider(modifier = Modifier.fillMaxWidth(), color = customColors.dividir, thickness = 1.dp)
+        HorizontalDivider(modifier = Modifier.fillMaxWidth(), color = customColors.divider, thickness = 1.dp)
         Column(
             verticalArrangement = Arrangement.spacedBy(8.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -109,6 +109,7 @@ fun NavigationColumn(
                     )
                     Text(
                         text = t(StringKey.PasswordSection),
+                        color = if(AppScreens.MainScreen.route == currentScreen) Color.White else customColors.text,
                         modifier = Modifier.padding(start = 6.dp)
                     )
                 }
@@ -133,12 +134,13 @@ fun NavigationColumn(
                     )
                     Text(
                         text = t(StringKey.Configuration),
+                        color = if(AppScreens.SettingsScreen.route == currentScreen) Color.White else customColors.text,
                         modifier = Modifier.padding(start = 6.dp)
                     )
                 }
             }
         }
-        HorizontalDivider(modifier = Modifier.fillMaxWidth(), color = customColors.dividir, thickness = 1.dp)
+        HorizontalDivider(modifier = Modifier.fillMaxWidth(), color = customColors.divider, thickness = 1.dp)
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Start,

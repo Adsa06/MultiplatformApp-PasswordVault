@@ -28,7 +28,7 @@ fun AppNavigation(
 
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
         val windowType = rememberWindowType(maxWidth) // maxWidth viene del scope
-        var currentScreen by remember { mutableStateOf(AppScreens.SettingsScreen.route) }
+        var currentScreen by remember { mutableStateOf(AppScreens.MainScreen.route) }
 
         Row (
             modifier = Modifier.fillMaxSize()
@@ -40,7 +40,7 @@ fun AppNavigation(
                     onLanguageChange = onLanguageChange,
                     onThemeChange = onThemeChange
                 )
-                VerticalDivider(color = customColors.dividir, thickness = 1.dp)
+                VerticalDivider(color = customColors.divider, thickness = 1.dp)
             }
 
             when (currentScreen) {

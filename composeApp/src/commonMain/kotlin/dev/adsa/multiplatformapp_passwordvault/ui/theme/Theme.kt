@@ -1,12 +1,10 @@
 package dev.adsa.multiplatformapp_passwordvault.ui.theme
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.staticCompositionLocalOf
-import androidx.compose.ui.graphics.Color
 
 val LocalDarkTheme = staticCompositionLocalOf<Boolean> { false }
 val LocalCustomColors = staticCompositionLocalOf<CustomColors> { CustomColors() }
@@ -43,7 +41,8 @@ val DarkCustomColors = CustomColors(
     iconBackground = darkIconBackground,
     cardBackground = darkCardBackground,
     icon = darkIcon,
-    dividir = darkDividir
+    divider = darkDivider,
+    fieldBackground = darkFieldBackground
 )
 
 val LightCustomColors = CustomColors(
@@ -53,7 +52,8 @@ val LightCustomColors = CustomColors(
     iconBackground = lightIconBackground,
     cardBackground = lightCardBackground,
     icon = lightIcon,
-    dividir = lightDividir
+    divider = lightDivider,
+    fieldBackground = lightFieldBackground
 )
 
 @Composable
