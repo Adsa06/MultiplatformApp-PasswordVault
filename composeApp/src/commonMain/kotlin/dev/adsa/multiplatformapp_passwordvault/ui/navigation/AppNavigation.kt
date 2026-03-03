@@ -5,12 +5,16 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import dev.adsa.multiplatformapp_passwordvault.domain.services.PasswordVaultService
+import dev.adsa.multiplatformapp_passwordvault.domain.viewmodels.PasswordListViewModel
 import dev.adsa.multiplatformapp_passwordvault.ui.resolution.WindowType
 import dev.adsa.multiplatformapp_passwordvault.ui.resolution.rememberWindowType
 import dev.adsa.multiplatformapp_passwordvault.ui.screens.DetailsScreen
@@ -24,6 +28,13 @@ fun AppNavigation(
     onLanguageChange: (Language) -> Unit,
     onThemeChange: (Boolean) -> Unit
 ) {
+    val service = remember { PasswordVaultService() }
+    val passwordListViewModel: PasswordListViewModel = remember { PasswordListViewModel() }
+
+    LaunchedEffect(Unit) {
+        passwordListViewModel.inicializate(service)
+    }
+
     val customColors = LocalCustomColors.current
 
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
@@ -47,6 +58,7 @@ fun AppNavigation(
                 AppScreens.MainScreen.route -> {
                     MainScreen(
                         navigate = { route -> currentScreen = route },
+                        passwordListViewModel = passwordListViewModel,
                         windowType = windowType
                     )
                 }
